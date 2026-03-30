@@ -4,9 +4,9 @@ Generate favicon assets and manifest from a single uploaded image, with an admin
 
 ## Requirements
 
-- PHP 8.1+
-- Symfony 6.4
-- OpenDXP 11 (Admin UI Classic / ExtJS)
+- PHP 8.3+
+- Symfony 7.4
+- OpenDXP 1.x (`open-dxp/opendxp:^1.0`, Admin UI Classic / ExtJS)
 
 ## Installation
 
@@ -41,6 +41,16 @@ Open: **Settings -> Favicon**
 - Upload a source image
 - Preview the current source
 - Delete the favicon set
+
+### OpenDXP admin preview
+
+Settings menu entry:
+
+![Settings panel](docs/settings-panel.png)
+
+Favicon tab (upload/delete/preview):
+
+![Favicon tab](docs/favicon-tab.png)
 
 Upload generates the full set of icons + `manifest.json` into:
 
