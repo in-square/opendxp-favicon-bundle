@@ -8,31 +8,31 @@ services:
     # INSTALLER
     #
 
-    InSquare\PimcoreFaviconBundle\Installer:
+    InSquare\OpendxpFaviconBundle\Installer:
         public: true
         arguments:
-            $bundle: "@=service('kernel').getBundle('InSquarePimcoreFaviconBundle')"
+            $bundle: "@=service('kernel').getBundle('InSquareOpendxpFaviconBundle')"
 
-    InSquare\PimcoreFaviconBundle\Service\FaviconGenerator:
+    InSquare\OpendxpFaviconBundle\Service\FaviconGenerator:
         arguments:
-            $manifestName: '%in_square_pimcore_favicon.manifest_name%'
-            $manifestBasePath: '%in_square_pimcore_favicon.manifest_base_path%'
+            $manifestName: '%in_square_opendxp_favicon.manifest_name%'
+            $manifestBasePath: '%in_square_opendxp_favicon.manifest_base_path%'
 
-    InSquare\PimcoreFaviconBundle\Twig\Extension\FaviconExtension:
+    InSquare\OpendxpFaviconBundle\Twig\Extension\FaviconExtension:
         arguments:
-            $themeColor: '%in_square_pimcore_favicon.theme_color%'
-            $tileColor: '%in_square_pimcore_favicon.tile_color%'
+            $themeColor: '%in_square_opendxp_favicon.theme_color%'
+            $tileColor: '%in_square_opendxp_favicon.tile_color%'
 
     #
     # CONTROLLERS
     #
 
-    InSquare\PimcoreFaviconBundle\Controller\:
+    InSquare\OpendxpFaviconBundle\Controller\:
         resource: '../../Controller'
         public: true
         tags: ['controller.service_arguments']
 
-    InSquare\PimcoreFaviconBundle\:
+    InSquare\OpendxpFaviconBundle\:
         resource: '../../'
         exclude:
             - '../../Controller/'
@@ -41,4 +41,4 @@ services:
             - '../../Resources/'
             - '../../Service/FaviconGenerator.php'
             - '../../Twig/Extension/FaviconExtension.php'
-            - '../../InSquarePimcoreFaviconBundle.php'
+            - '../../InSquareOpendxpFaviconBundle.php'

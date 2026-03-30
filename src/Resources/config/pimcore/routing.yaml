@@ -1,6 +1,6 @@
-insquare_pimcore_favicon:
+insquare_opendxp_favicon:
     resource: "../../../Controller/Admin/"
-    type: annotation
+    type: attribute
     prefix: /admin/bundle/insquare-favicon
     options:
         expose: true

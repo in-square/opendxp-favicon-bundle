@@ -1,6 +1,6 @@
 <?php
 
-namespace InSquare\PimcoreFaviconBundle\DependencyInjection;
+namespace InSquare\OpendxpFaviconBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -9,7 +9,7 @@ final class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder('in_square_pimcore_favicon');
+        $treeBuilder = new TreeBuilder('in_square_opendxp_favicon');
         $rootNode = $treeBuilder->getRootNode();
 
         $rootNode

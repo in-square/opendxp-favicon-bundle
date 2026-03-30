@@ -1,4 +1,4 @@
-# Pimcore Favicon Bundle
+# OpenDXP Favicon Bundle
 
 Generate favicon assets and manifest from a single uploaded image, with an admin module for upload and preview.
 
@@ -6,12 +6,12 @@ Generate favicon assets and manifest from a single uploaded image, with an admin
 
 - PHP 8.1+
 - Symfony 6.4
-- Pimcore 11 (Admin UI Classic / ExtJS)
+- OpenDXP 11 (Admin UI Classic / ExtJS)
 
 ## Installation
 
 ```bash
-composer require in-square/pimcore-favicon-bundle
+composer require in-square/opendxp-favicon-bundle
 ```
 
 Register the bundle in `config/bundles.php` if needed:
@@ -21,7 +21,7 @@ Register the bundle in `config/bundles.php` if needed:
 
 return [
     // ...
-    InSquare\PimcoreFaviconBundle\InSquarePimcoreFaviconBundle::class => ['all' => true],
+    InSquare\OpendxpFaviconBundle\InSquareOpendxpFaviconBundle::class => ['all' => true],
 ];
 ```
 
@@ -29,7 +29,7 @@ Install assets and register permissions:
 
 ```bash
 php bin/console assets:install
-php bin/console pimcore:bundle:install InSquarePimcoreFaviconBundle
+php bin/console opendxp:bundle:install InSquareOpendxpFaviconBundle
 ```
 
 Grant the `favicon_settings` permission to the target roles/users (Admin -> Settings -> Users/Roles).
@@ -69,10 +69,10 @@ The function returns the standard HTML tags (apple-touch-icon, icon, manifest, a
 
 ## Configuration
 
-Create `config/packages/in_square_pimcore_favicon.yaml`:
+Create `config/packages/in_square_opendxp_favicon.yaml`:
 
 ```yaml
-in_square_pimcore_favicon:
+in_square_opendxp_favicon:
   theme_color: '#ffffff'
   tile_color: '#ffffff'
   manifest_name: 'App'

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace InSquare\PimcoreFaviconBundle\Twig\Extension;
+namespace InSquare\OpendxpFaviconBundle\Twig\Extension;
 
 use Symfony\Component\Asset\Packages;
 use Twig\Extension\AbstractExtension;
@@ -94,6 +94,10 @@ final class FaviconExtension extends AbstractExtension
 
     private function getFaviconDir(): string
     {
-        return PIMCORE_WEB_ROOT . '/favicon';
+        $webRoot = \defined('OPENDXP_WEB_ROOT')
+            ? OPENDXP_WEB_ROOT
+            : \dirname(__DIR__, 6) . '/public';
+
+        return $webRoot . '/favicon';
     }
 }

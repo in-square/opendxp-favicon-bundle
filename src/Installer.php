@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace InSquare\PimcoreFaviconBundle;
+namespace InSquare\OpendxpFaviconBundle;
 
-use Pimcore\Extension\Bundle\Installer\SettingsStoreAwareInstaller;
+use OpenDxp\Extension\Bundle\Installer\SettingsStoreAwareInstaller;
+use OpenDxp\Model\User\Permission\Definition;
 
 final class Installer extends SettingsStoreAwareInstaller
 {
@@ -27,23 +28,20 @@ final class Installer extends SettingsStoreAwareInstaller
 
     private function addUserPermission(): void
     {
-        $db = \Pimcore\Db::get();
-
         foreach (self::USER_PERMISSIONS as $permission) {
-            $db->insert('users_permission_definitions', [
-                $db->quoteIdentifier('key') => $permission,
-                $db->quoteIdentifier('category') => self::USER_PERMISSIONS_CATEGORY,
-            ]);
+            $definition = Definition::create($permission);
+            $definition->setCategory(self::USER_PERMISSIONS_CATEGORY);
+            $definition->save();
         }
     }
 
     private function removeUserPermission(): void
     {
-        $db = \Pimcore\Db::get();
+        $db = \OpenDxp\Db::get();
 
         foreach (self::USER_PERMISSIONS as $permission) {
             $db->delete('users_permission_definitions', [
-                $db->quoteIdentifier('key') => $permission,
+                'key' => $permission,
             ]);
         }
     }

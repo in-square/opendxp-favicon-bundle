@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace InSquare\PimcoreFaviconBundle\Service;
+namespace InSquare\OpendxpFaviconBundle\Service;
 
-use Pimcore\Image;
+use OpenDxp\Image;
 use Symfony\Component\Filesystem\Filesystem;
 
 final class FaviconGenerator

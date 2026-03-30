@@ -1,17 +1,17 @@
 <?php
 
-namespace InSquare\PimcoreFaviconBundle\DependencyInjection;
+namespace InSquare\OpendxpFaviconBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-final class InSquarePimcoreFaviconExtension extends Extension
+final class InSquareOpendxpFaviconExtension extends Extension
 {
     public function getAlias(): string
     {
-        return 'in_square_pimcore_favicon';
+        return 'in_square_opendxp_favicon';
     }
 
     public function load(array $configs, ContainerBuilder $container): void
@@ -33,7 +33,7 @@ final class InSquarePimcoreFaviconExtension extends Extension
      */
     private function registerParameters(ContainerBuilder $container, array $config): void
     {
-        $prefix = 'in_square_pimcore_favicon';
+        $prefix = 'in_square_opendxp_favicon';
 
         $container->setParameter($prefix, $config);
 

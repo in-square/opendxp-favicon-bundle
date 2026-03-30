@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace InSquare\PimcoreFaviconBundle\Controller\Admin;
+namespace InSquare\OpendxpFaviconBundle\Controller\Admin;
 
-use InSquare\PimcoreFaviconBundle\Service\FaviconGenerator;
-use Pimcore\Bundle\AdminBundle\Controller\AdminAbstractController;
-use Pimcore\Image;
+use InSquare\OpendxpFaviconBundle\Service\FaviconGenerator;
+use OpenDxp\Bundle\AdminBundle\Controller\AdminAbstractController;
+use OpenDxp\Image;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 class FaviconController extends AdminAbstractController
 {
     private const SOURCE_FILENAME = 'source.png';
 
-    #[Route('/display', name: 'insquare_pimcore_favicon_display', methods: ['GET'])]
+    #[Route('/display', name: 'insquare_opendxp_favicon_display', methods: ['GET'], options: ['expose' => true])]
     public function displayAction(): StreamedResponse
     {
         $this->checkPermission('favicon_settings');
@@ -41,7 +41,7 @@ class FaviconController extends AdminAbstractController
         ]);
     }
 
-    #[Route('/upload', name: 'insquare_pimcore_favicon_upload', methods: ['POST'])]
+    #[Route('/upload', name: 'insquare_opendxp_favicon_upload', methods: ['POST'], options: ['expose' => true])]
     public function uploadAction(
         Request $request,
         Filesystem $filesystem,
@@ -78,7 +78,7 @@ class FaviconController extends AdminAbstractController
         return $response;
     }
 
-    #[Route('/delete', name: 'insquare_pimcore_favicon_delete', methods: ['DELETE'])]
+    #[Route('/delete', name: 'insquare_opendxp_favicon_delete', methods: ['DELETE'], options: ['expose' => true])]
     public function deleteAction(Filesystem $filesystem): JsonResponse
     {
         $this->checkPermission('favicon_settings');
@@ -90,7 +90,11 @@ class FaviconController extends AdminAbstractController
 
     private function getFaviconDir(): string
     {
-        return PIMCORE_WEB_ROOT . '/favicon';
+        $webRoot = \defined('OPENDXP_WEB_ROOT')
+            ? OPENDXP_WEB_ROOT
+            : \dirname(__DIR__, 6) . '/public';
+
+        return $webRoot . '/favicon';
     }
 
     private function getSourcePath(): string
